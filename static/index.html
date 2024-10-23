@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html data-theme="light">
+
+<head>
+  <title>Bitcoin Transactions (Unconfirmed)</title>
+  <script src="https://unpkg.com/htmx.org@2.0.3"></script>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.13/dist/full.min.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="container mx-auto">
+  <div class="navbar bg-base-100 mb-20">
+    <div class="flex-1">
+      <a class="btn btn-ghost text-xl">HTMX Demo</a>
+    </div>
+    <div class="flex-none gap-2">
+      <div class="form-control">
+        <input type="text" name="search" placeholder="Search" class="input input-bordered w-24 md:w-auto"
+          hx-get="/search" hx-target="#products" hx-trigger="keyup from:input[name='search'] delay:500ms" />
+      </div>
+    </div>
+  </div>
+  <div>
+    <div id="result-count" class="text-center text-2xl font-bold mb-4" hx-get="/count"
+      hx-trigger="load, keyup from:input[name='search'] delay:500ms" hx-target="#result-count"
+      hx-include="[name='search']">
+    </div>
+  </div>
+  <div id="products" class="grid grid-cols-4 gap-6" hx-get="/products" hx-trigger="load"></div>
+</body>

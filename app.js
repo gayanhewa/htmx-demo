@@ -41,7 +41,7 @@ const generateProductCard = (product) => {
   `;
 }
 
-app.use(express.static('public'));
+app.use(express.static('static'));
 
 app.get('/', async (req, res) => {
   res.sendFile('index.html', { root: 'basic' });
